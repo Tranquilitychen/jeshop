@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+
+		<title>个人资料</title>
+
+		<link href="../AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="../AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+
+		<link href="../css/personal.css" rel="stylesheet" type="text/css">
+		<link href="../css/infstyle.css" rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" href="easyui/themes/default/easyui.css">
+		<link rel="stylesheet" href="easyui/themes/icon.css">
+		<link rel="stylesheet" href="easyui/themes/demo.css">
+		<script src="easyui/jquery.min.js"></script>
+		<script src="easyui/jquery.easyui.min.js"></script>
+
+
+		<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="../AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+
+		<script src="js/jquery/jquery-3.3.1.min.js"></script>
+		<script src="js/jquery/jquery.cookie.js"></script>
+
+		<script src="js/information.js"></script>
+
+
+	</head>
+
+	<body>
+
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-info">
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+						</div>
+						<hr/>
+
+						<!--头像 -->
+						<div class="user-infoPic">
+
+							<div class="filePic">
+								<img  id="headSculpture" class="am-circle am-img-thumbnail" src="../images/getAvatar.do.jpg" alt="" />
+							</div>
+
+							<p class="am-form-help">头像</p>
+
+							<div class="info-m">
+								<div><b>用户名：<i id="username">小叮当</i></b></div>
+								<div><b>注册时间：<i id="registerTime">注册时间</i></b></div>
+								<div><b>邮箱： <i id="email">邮箱</i></b></div>
+							</div>
+						</div>
+
+						<!--个人信息 -->
+						<div class="info-main">
+
+							<form id="customerInfo_form" enctype="multipart/form-data"
+								  method="post" class="am-form am-form-horizontal">
+
+								<div class="am-form-group">
+									<label for="user-headSculpture" class="am-form-label">头像</label>
+									<div class="am-form-content">
+										<input type="file" id="user-headSculpture" name="headSculpture" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
+									</div>
+								</div>
+
+								<div class="am-form-group">
+									<label for="user-nickname" class="am-form-label">昵称</label>
+									<div class="am-form-content">
+										<input type="text" id="user-nickname" name="shopName" >
+                                          <small>昵称长度不能超过40个汉字</small>
+									</div>
+								</div>
+
+								<div class="am-form-group">
+									<label class="am-form-label">性别</label>
+									<div class="am-form-content sex">
+										<label class="am-radio-inline">
+											<input type="radio" name="radio" value="1" data-am-ucheck> 男
+										</label>
+										<label class="am-radio-inline">
+											<input type="radio" name="radio" value="2" data-am-ucheck> 女
+										</label>
+										<label class="am-radio-inline">
+											<input type="radio" name="radio" value="3" data-am-ucheck> 保密
+										</label>
+									</div>
+								</div>
+
+								<div class="am-form-group">
+									<label class="am-form-label">生日</label>
+									<div class="am-form-content">
+										<input name="startTime" id="user-birth"
+											   data-options="formatter:formatter,parser:parser" class="easyui-datetimebox" />
+									</div>
+								</div>
+
+								<input type="hidden" id="uid" name="uid" value="0"/>
+								<input type="hidden" id="newCustomer" name="newCustomer" value="0"/>
+
+								<div class="info-btn">
+									<div class="am-btn am-btn-danger" id="btn_update_data" onclick="fileHead()">保存修改</div>
+									<!--<input  type="submit" value="保存修改"  />-->
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!--底部-->
+				<div class="footer">
+					<div class="footer-hd">
+						<p>
+							<a href="/jeshop/static/main/index.html">商城首页</a>
+							<b>|</b>
+							<a href="#">支付宝</a>
+							<b>|</b>
+							<a href="#">物流</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<aside class="menu">
+				<ul>
+					<li class="person active">
+						<a href="index.html"><i class="am-icon-user"></i>个人中心</a>
+					</li>
+					<li class="person">
+						<p><i class="am-icon-newspaper-o"></i>个人资料</p>
+						<ul>
+							<li><a href="information.html">个人信息</a></li>
+							<li><a href="safety.html">安全设置</a></li>
+							<li><a href="address.html">地址管理</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<p><i class="am-icon-balance-scale"></i>我的交易</p>
+						<ul>
+							<li><a href="order.html">订单管理</a></li>
+
+						</ul>
+					</li>
+
+					<li class="person">
+						<p><i class="am-icon-tags"></i>我的收藏</p>
+						<ul>
+							<li><a href="collection.html">收藏</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<p><i class="am-icon-qq"></i>在线客服</p>
+						<ul>
+							<li><a href="consultation.html">商品咨询</a></li>
+							<li><a href="suggest.html">意见反馈</a></li>
+						</ul>
+					</li>
+				</ul>
+
+			</aside>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.kalic.mapper.ProductMapper"> 	
+		
+		<select id="selAllProduct"   resultType="product">
+				select * from product
+		</select>
+		
+		<select id="selProductForType" resultType="product">
+				select * from product where ptype = #{ptype}
+		</select>
+		
+		<select id="selProductForId" resultType="product">
+				select * from product where pid = #{pid}
+		</select>
+		
+		<select id="selProductForKey" resultType="product">
+				select * from product where pname like "%"#{key}"%" or `describe` like "%"#{key}"%"
+		</select>
+
+		<select id="selProductTimeFirst" resultType="product">
+				select * from product ORDER BY ptime DESC LIMIT #{limit}
+		</select>
+
+		
+		
+		
+<!--
+		
+		<delete id="delProduct"  parameterType="int">
+				delete from product where pid = #{id}
+		</delete>
+		
+		修改pid 的库存 stock 
+		<update id="updProduct"  parameterType="product">
+				update product set stock=#{stock} where id=#{pid}
+		</update> -->
+		<!--修改pid 的库存 stock-->
+		<update id="updProduct"  parameterType="product">
+			update product set ptime=#{ptime} where pid=#{pid}
+		</update>
+
+		<insert id="insProduct"  parameterType="product" 	 >
+				insert into product (pname, stock, price, pimg, `describe`, ptype, ptime)
+				values(#{pname}, #{stock}, #{price}, #{pimg}, #{describe}, #{ptype}, #{ptime})
+		</insert>
+  </mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.kalic.mapper.CustomerMapper"> 	
+		
+		<!-- 	insert into customer (username, password, email, registerTime) 
+			values ('aa','123','1084456@qq.com', #{registerTime}); -->
+		<insert id="insCustomer" >
+		 	insert into customer (username, `password`, email, registerTime, state, validateCode)
+				values (#{username}, #{password}, #{email}, #{registerTime}, #{state}, #{validateCode});
+		</insert>
+
+		<select id="selCustomer" resultType="customer">
+				select * from customer where username=#{username} and password=#{password}
+		</select>
+
+		<select id="selCustomerByName" resultType="customer">
+				select * from customer where username=#{username}
+		</select>
+
+		<select id="selCustomerById" resultType="customer">
+				select * from customer where uid=#{uid}
+		</select>
+
+		<select id="selCustomerByEmail"  resultType="customer">
+				select * from customer where email=#{email}
+		</select>
+
+		<update id="updCustomerEmailByUid">
+			update customer set email=#{email}, state=#{state}, validateCode=#{validateCode} where uid=#{uid}
+		</update>
+
+		<delete id="delCustomer">
+			DELETE FROM customer WHERE uid = #{uid}
+		</delete>
+
+		<update id="updCustomerPasswordByUid">
+			update customer set `password`=#{password} where uid=#{uid}
+		</update>
+
+  </mapper>

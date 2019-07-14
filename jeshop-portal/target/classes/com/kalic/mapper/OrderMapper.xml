@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.kalic.mapper.OrderMapper">
+
+       <!--1.查询Order 信息 int uid-->
+      <select id="selOrderByUid" resultType="order">
+          select * from `order` where uid=#{uid}
+      </select>
+
+        <!--1.查询Order 信息 int uid-->
+        <select id="selOrderByOrderid" resultType="order">
+          select * from `order` where orderid=#{orderid}
+        </select>
+
+
+      <!--2.插入Order 信息 Order-->
+      <insert id="insOrder">
+          insert into `order` (orderid, uid, money, addrid, createTime, state)
+              values (#{orderid}, #{uid}, #{money}, #{addrid}, #{createTime}, #{state});
+      </insert>
+
+        <!--3.修改订单的支付时间以及状态-->
+        <update id="updOrderPayTimeAndState">
+            update `order` set payTime= #{payTime}, state=#{state} where orderid = #{orderid}
+        </update>
+
+        <!--4.修改订单的发货时间以及状态-->
+        <update id="updOrderDeliveryTimeAndState">
+            update `order` set deliveryTime= #{deliveryTime}, state=#{state} where orderid = #{orderid}
+        </update>
+
+        <!--5.修改订单的完成时间以及状态-->
+        <update id="updOrderClosingTimeAndState">
+            update `order` set closingTime= #{closingTime}, state=#{state} where orderid = #{orderid}
+        </update>
+
+        <delete id="delOrderByOrderid">
+            delete from `order` where orderid = #{orderid}
+        </delete>
+
+  </mapper>

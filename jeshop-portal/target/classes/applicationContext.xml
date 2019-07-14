@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 添加注解扫描 -->
+	<!-- 需要注意的是：spring 与 springmvc整合时，spring 只扫描 service , springmvc 扫描 controller -->
+	<context:component-scan base-package="com.kalic.service" />
+	
+	<!-- 导入外部文件 -->
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<!-- 配置spring 配置mybatis -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+			<property value="${jdbc.driverClass}" name="driverClassName"/>
+			<property value="${jdbc.jdbcUrl}" name="url"/>
+			<property value="${jdbc.user}" name="username"/>
+			<property value="${jdbc.password}" name="password"/>
+	</bean>
+	
+	<!-- 配置SqlSessionFactory -->
+	<bean id="factory"  class="org.mybatis.spring.SqlSessionFactoryBean" >
+			<property name="dataSource" ref="dataSource"></property>
+			<!-- 添加别名设置 -->
+			<!-- 此处可添加MyBatis的配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+			<property name="typeAliasesPackage" value="com.kalic.pojo" ></property>
+
+
+	</bean>
+	
+	<!-- 配置mybatis 的 Mapper扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
+			<property name="basePackage"  value="com.kalic.mapper" ></property>
+			<property name="sqlSessionFactoryBeanName"  value="factory"></property>
+	</bean>
+
+	<!-- 配置事务管理器，对数据库进行增删改的时候需要添加事务 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"></property>	
+	</bean>
+	
+	<!-- 配置声明式事务 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+			<tx:attributes>
+					<tx:method name="ins*"/>
+					<tx:method name="del*"/>
+					<tx:method name="upd*"/>
+					<tx:method name="*" read-only="true" />
+			</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务所需的aop切面 -->
+	<aop:config>
+			<aop:pointcut expression="execution(* com.kalic.service.impl.*.*(..))" id="myPointcut"/>
+			<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut"/>
+	</aop:config>
+	
+	
+	
+</beans>

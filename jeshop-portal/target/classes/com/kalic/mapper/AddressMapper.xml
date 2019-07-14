@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.kalic.mapper.AddressMapper">
+
+		<select id="selAllAddressByUid" resultType="address">
+			select * from address where uid = #{uid};
+		</select>
+
+		<select id="selAddressByAddrid" resultType="address">
+			select * from address where addrid = #{addrid}
+		</select>
+
+		<insert id="insAddressByUid" >
+			insert into address (uid, addressee, phone, address)
+				VALUES(#{uid},#{addressee},#{phone},#{address});
+		</insert>
+
+		<update id="updAddressByAddrid">
+			UPDATE address SET addressee = #{addressee}, phone=#{phone}, address=#{address}
+				WHERE addrid=#{addrid};
+		</update>
+
+		<delete id="delAddressByAddrid">
+			DELETE FROM address WHERE addrid = #{addrid};
+		</delete>
+
+  </mapper>

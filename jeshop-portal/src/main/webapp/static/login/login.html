@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>kalic</title>
+	<link rel="stylesheet" href="css/auth.css">
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/login.js"></script>
+
+</head>
+
+<body>
+	<div class="kalic kalic-blue">
+		<!--图片-->
+		<div class="kalic-brand">
+			<img src="img/kodinger.jpg" alt="logo">
+		</div>
+		<div class="kalic-wrapper">
+			<div class="kalic-box kalic-login">
+				<div class="kalic-box-inner">
+
+					<form method="post" id="login-form">
+						<p>登陆</p>
+
+						<div class="kalic-group username-group">
+							<label>用户名</label>
+							<input type="text" name="username" class="kalic-input" />
+						</div>
+
+						<div class="kalic-group password-group">
+							<label>密码 <a href="#" class="forgot-link">忘记密码?</a></label>
+							<input type="password" name="password" class="kalic-input">
+						</div>
+
+						<div class="kalic-group">
+							<label>验证码</label>
+							<input type="text" name="checkImg" class="kalic-input" />
+							<!--此处的验证码用 JS 或者后台生成 生成后保存到文件家， 前台从文件夹的路径获取-->
+							<img  height="40" width="90" id="imgCheckCode" src="img/dianwo.png" onclick="changeImgAndTime()"/>
+						</div>
+						<button class="kalic-btn login-btn" id="login-btn">
+							登陆
+						</button>
+
+						<div class="text-foot">
+							没有账户? <a href="register.html" class="register-link">注册</a>
+							<a href="../main/index.html" class="register-link">主页</a>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

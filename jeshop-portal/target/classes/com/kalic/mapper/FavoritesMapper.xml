@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.kalic.mapper.FavoritesMapper">
+
+		<select id="selAllFavoritesProduct" resultType="favorites">
+			select * from favorites where uid=#{uid};
+		</select>
+
+		<select id="selFavoritesByUidAndPid" resultType="favorites">
+			select * from favorites where uid=#{uid} and pid=#{pid}
+		</select>
+
+		<insert id="insFavorites">
+			insert into favorites (uid, pid,fdate) values (#{uid}, #{pid}, #{fdate});
+		</insert>
+
+		<delete id="deleteFavorites">
+			delete from favorites where fid = #{fid} and uid=#{uid}
+		</delete>
+  </mapper>

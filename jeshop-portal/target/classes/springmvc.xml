@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 扫描注解，之扫描controller包 -->
+	<context:component-scan
+		base-package="com.kalic.controller" />
+
+	<!-- 注释驱动 -->
+	<mvc:annotation-driven />
+
+	<!-- 设置静态资源 location:静态资源的地址 mapping:导入静态资源 -->
+	<mvc:resources location="/image/" mapping="/image/**"></mvc:resources>
+	<mvc:resources location="/files/" mapping="/files/**"></mvc:resources>
+	<mvc:resources location="/static/" mapping="/static/**"></mvc:resources>
+
+	<!--设置拦截器-->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!--需要拦截的请求-->
+			<mvc:mapping path="/address/*"/>
+			<bean class="com.kalic.interceptor.CustomerInterceptor"></bean>
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<!--需要拦截的请求-->
+			<mvc:mapping path="/order/*"/>
+			<bean class="com.kalic.interceptor.CustomerInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- 视图解析器（可以不设置） org.springframework.web.servlet.view.InternalResourceViewResolver -->
+
+	<!-- 支持上传文件 multipartResolver解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+		
+</beans>

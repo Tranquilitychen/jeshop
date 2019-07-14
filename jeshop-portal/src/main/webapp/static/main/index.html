@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>BuyMore - eCommerce Bootstrap Template</title>
+
+    <!--======== All Stylesheet =========-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/linearicons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--======== All Javascript =========-->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/index.js"></script>
+
+</head>
+
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xs-7">
+                    <ul class="list-inline social-icon">
+                        <li><i class=" fa fa-facebook"></i></li>
+                        <li><i class=" fa fa-google-plus"></i></li>
+                        <li><i class=" fa fa-linkedin"></i></li>
+                        <li><i class=" fa fa-twitter"></i></li>
+                        <li><i class=" fa fa-skype"></i></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-xs-5">
+                    <ul class="list-inline security">
+                        <li title="Login"><i class=" lnr lnr-lock"></i>
+                            <!--访问登陆页面-->
+                            <span class="hidden-xs"><a id="login"
+                                    href="http://localhost:81/jeshop/static/login/login.html">Login</a></span></li>
+                        <li title="Register"><i class=" lnr lnr-pencil"></i>
+                            <!--访问注册页面-->
+                            <span class="hidden-xs"><a href="http://localhost:81/jeshop/static/login/register.html">Register</a></span>
+                        </li>
+                        <li title="Wishlist"><i class=" lnr lnr-heart"></i>
+                            <!--访问收藏夹页面-->
+                            <span class="hidden-xs"><a id="collection_wishlist" href="#">Wishlist</a></span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="middle-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <!--访问主页-->
+                    <div><a class="site-title" href="index.html">Buy<span>More</span></a></div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-md-offset-7 col-xs-6">
+                    <div class="cart-label dropdown"  id="shopcar_list">
+                        <!--购物车列表的按钮，点击出现一个下拉框-->
+                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            <!--购物车列表-->
+                            <small class="hidden-xs"  >Shopping Cart</small>
+                            <i class="lnr lnr-cart"></i>
+
+                            <!--动态的 这里的数字可以使用变量来进行修改-->
+                            <!--<span id="shopcar_number">6</span>-->
+                        </a>
+
+                        <!--动态添加 li与 p 购物车的列表 此处还需要进行点击商品到详情的功能-->
+                       <!-- <ul class="dropdown-menu carts">
+                            <li><p> Cart Empty !!! </p></li>
+                            <li><p> Cart Empty !!! </p></li>
+                            <li><p> Cart Empty !!! </p></li>
+                            <li><p> Cart Empty !!! </p></li>
+                        </ul>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-header">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#menu-id" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="menu-id">
+                            <ul class="nav navbar-nav">
+                                <!-- 下部菜单的 Home -->
+                                <li class="active dropdown">
+                                    <!-- a标签跳转 #表示 下拉列表有作用 -->
+                                    <a href="index.html" class="dropdown-toggle p-l-0" data-toggle="dropdown"
+                                       role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                                    <!--Home 的 下拉列表-->
+                                    <ul class="dropdown-menu">
+                                        <li><a href="index.html">首页</a></li>
+                                        <li><a href="product-grid.html?ptype=0" id="showAllProduct">全部商品</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- 商品列表 -->
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                        role="button" aria-haspopup="true"
+                                                        aria-expanded="false">商品分类</a>
+                                    <ul class="dropdown-menu">
+                                        <!-- 商品网格 -->
+                                        <li><a href="product-grid.html?ptype=1" id="product_riyongpin">日用品</a></li>
+                                        <!-- 商品列表 -->
+                                        <li><a href="product-grid.html?ptype=2" id="product_food">食物</a></li>
+                                        <!-- 推荐商品 -->
+                                        <li><a href="product-grid.html?ptype=3" id="product_jewelry">首饰</a></li>
+                                        <!-- 单个商品 -->
+                                        <li><a href="product-grid.html?ptype=4" id="product_cloth">bilibili周边</a></li>
+                                    </ul>
+                                </li>
+
+                                <!--问题解答-->
+                                <li><a href="#">后台管理系统</a></li>
+                                <!--网站详情-->
+                                <li><a href="#">github</a></li>
+                              <!--  问题解答-->
+                                <!--<li><a href="#">捐赠名单</a></li>-->
+                            </ul>
+                            <!--搜索框-->
+                            <div class="nav-search">
+                                <form class="navbar-form navbar-right" role="search">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search Your Item Here"
+                                               id="search_key"><i class="fa fa-search search-btn"
+                                                                  id="search_button_li"></i>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- home -->
+<section class="home">
+    <div class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <!--主页中间图片的文字内容-->
+                    <h2>2019</h2>
+                    <h1>Collections</h1>
+                    <small>Best Style For Women, Stock Avilable</small>
+                    <!-- 存在一个按钮 -->
+                    <div><a class="btn btn-default see-collection" id="fashionwomen">See Product</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- feature box -->
+<section class="feature-box">
+    <div class="container">
+        <div class="row">
+            <!-- fashion 1 lnr-heart -->
+            <!--添加展示商品，为其建立一张表，以此来获取数据，方便后台管理并更换-->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="f-s-b">
+                    <!-- fashion show 文字 -->
+                    <div class="well well-sm">
+                        <i class="lnr lnr-heart"></i>
+                        <h3 id="fashion_product_1_pname">Fashion Show</h3>
+                        <small id="fashion_product_1_describe">On Order Over 150.00</small>
+                    </div>
+                </div>
+            </div>
+            <!-- fashion 2 lnr-user -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="f-s-b">
+                    <div class="well well-sm">
+                        <i class="lnr lnr-heart"></i>
+                        <h3 id="fashion_product_2_pname">Fashion Show</h3>
+                        <small id="fashion_product_2_describe">On Order Over 150.00</small>
+                    </div>
+                </div>
+            </div>
+            <!-- fashion 3 lnr-camera-video -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="f-s-b">
+                    <div class="well well-sm">
+                        <i class="lnr lnr-heart"></i>
+                        <h3 id="fashion_product_3_pname">Fashion Show</h3>
+                        <small id="fashion_product_3_describe">On Order Over 150.00</small>
+                    </div>
+                </div>
+            </div>
+            <!-- fashion 4 lnr-camera -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="f-s-b">
+                    <div class="well well-sm">
+                        <!-- fashion lnr-camera -->
+                        <i class="lnr lnr-heart"></i>
+                        <h3 id="fashion_product_4_pname">Fashion Show</h3>
+                        <small id="fashion_product_4_describe">On Order Over 150.00</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Ad one -->
+<section class="ad-1">
+    <div class="container">
+        <div class="ad-1">
+            <div class="row">
+                <!--产品展实窗口 1-->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="ad-box-1 fashion_product">
+                        <input id="fashion_product_1_pid" type="hidden" name="pid" value=""/>
+                        <img id="fashion_product_1_img" src="images/bag1.png" alt="bag"/>
+                        <!--对商品的操作-->
+                        <div class="grid-overlay">
+                            <ul>
+                                <!--收藏-->
+                                <li id="fashion_product_1_link"><i class="lnr lnr-link"></i></li>
+                                <!--图片展示-->
+                                <li id="fashion_product_1_heart"><i class="lnr lnr-heart"></i></li>
+                                <!--加入购物车-->
+                                <li id="fashion_product_1_cart"><i class="lnr lnr-cart"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--产品展实窗口 2-->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="ad-box-1 fashion_product" >
+                        <input id="fashion_product_2_pid" type="hidden" name="pid" value=""/>
+                        <img id="fashion_product_2_img" src="images/bag1.png" alt="bag"/>
+                        <!--对商品的操作-->
+                        <div class="grid-overlay">
+                            <ul>
+                                <!--收藏-->
+                                <li id="fashion_product_2_link"><i class="lnr lnr-link"></i></li>
+                                <!--图片展示-->
+                                <li id="fashion_product_2_heart"><i class="lnr lnr-heart"></i></li>
+                                <!--加入购物车-->
+                                <li id="fashion_product_2_cart"><i class="lnr lnr-cart"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--产品展实窗口 3-->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="ad-box-1 fashion_product">
+                        <input id="fashion_product_3_pid" type="hidden" name="pid" value=""/>
+                        <img id="fashion_product_3_img" src="/jeshop/image/bilibili/22niang.png" alt="bag"/>
+                        <!--对商品的操作-->
+                        <div class="grid-overlay">
+                            <ul>
+                                <!--收藏-->
+                                <li id="fashion_product_3_link"><i class="lnr lnr-link"></i></li>
+                                <!--图片展示-->
+                                <li id="fashion_product_3_heart"><i class="lnr lnr-heart"></i></li>
+                                <!--加入购物车-->
+                                <li id="fashion_product_3_cart"><i class="lnr lnr-cart"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--产品展实窗口 4-->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="ad-box-1 fashion_product" >
+                        <input id="fashion_product_4_pid" type="hidden" name="pid" value=""/>
+                        <img id="fashion_product_4_img" src="images/bag1.png" alt="bag"/>
+                        <!--对商品的操作-->
+                        <div class="grid-overlay">
+                            <ul>
+                                <!--收藏-->
+                                <li id="fashion_product_4_link"><i class="lnr lnr-link"></i></li>
+                                <!--图片展示-->
+                                <li id="fashion_product_4_heart"><i class="lnr lnr-heart"></i></li>
+                                <!--加入购物车-->
+                                <li id="fashion_product_4_cart"><i class="lnr lnr-cart"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature Product 特色商品 -->
+<section class="feature-product">
+
+    <div class="grid-product">
+        <div class="container">
+            <div class="row">
+                <div class="section-title col-md-offset-3 col-md-6 col-xs-12 text-center">
+                    <h2>Featured Products</h2>
+                    <small>Check Out The Best Offer To Stay Trend</small>
+                    <div class="section-border"><span class="dash"></span></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!--特色商品 5-->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-grid fashion_product" >
+                        <div class="grid-img">
+                            <!--商品图片-->
+                            <input id="fashion_product_5_pid" type="hidden" name="pid" value=""/>
+                            <img id="fashion_product_5_img" class="img-resposive" src="images/women1.jpg" alt="women"/>
+                            <!--对商品的操作-->
+                            <div class="grid-overlay">
+                                <ul>
+                                    <!--收藏-->
+                                    <li id="fashion_product_5_link"><i class="lnr lnr-link"></i></li>
+                                    <!--图片展示-->
+                                    <li id="fashion_product_5_heart"><i class="lnr lnr-heart"></i></li>
+                                    <!--加入购物车-->
+                                    <li id="fashion_product_5_cart"><i class="lnr lnr-cart"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--特色商品 名称与价格-->
+                        <h3 id="fashion_product_5_pname">Bright Scalet-Shirt <span
+                                id="fashion_product_5_price">$65</span></h3>
+                        <!--特色商品 描述-->
+                        <p id="fashion_product_5_describe">Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+
+                <!--特色商品 6-->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-grid fashion_product">
+                        <div class="grid-img">
+                            <!--商品图片-->
+                            <input id="fashion_product_6_pid" type="hidden" name="pid" value=""/>
+                            <img id="fashion_product_6_img" class="img-resposive" src="images/women1.jpg" alt="women"/>
+
+                            <!--<strong>25%</strong>
+                            <strong class="new">New</strong>-->
+                            <!--对商品的操作-->
+                            <div class="grid-overlay">
+                                <ul>
+                                    <!--收藏-->
+                                    <li id="fashion_product_6_link"><i class="lnr lnr-link"></i></li>
+                                    <!--图片展示-->
+                                    <li id="fashion_product_6_heart"><i class="lnr lnr-heart"></i></li>
+                                    <!--加入购物车-->
+                                    <li id="fashion_product_6_cart"><i class="lnr lnr-cart"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--特色商品 名称与价格-->
+                        <h3 id="fashion_product_6_pname">Bright Scalet-Shirt <span
+                                id="fashion_product_6_price">$65</span></h3>
+                        <!--特色商品 描述-->
+                        <p id="fashion_product_6_describe">Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+
+                <!--特色商品 7-->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-grid fashion_product">
+                        <div class="grid-img">
+                            <!--商品图片-->
+                            <input id="fashion_product_7_pid" type="hidden" name="pid" value=""/>
+                            <img id="fashion_product_7_img" class="img-resposive" src="images/women1.jpg" alt="women"/>
+                            <!--对商品的操作-->
+                            <div class="grid-overlay">
+                                <ul>
+                                    <!--收藏-->
+                                    <li id="fashion_product_7_link"><i class="lnr lnr-link"></i></li>
+                                    <!--图片展示-->
+                                    <li id="fashion_product_7_heart"><i class="lnr lnr-heart"></i></li>
+                                    <!--加入购物车-->
+                                    <li id="fashion_product_7_cart"><i class="lnr lnr-cart"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--特色商品 名称与价格-->
+                        <h3 id="fashion_product_7_pname">Bright Scalet-Shirt <span
+                                id="fashion_product_7_price">$65</span></h3>
+                        <!--特色商品 描述-->
+                        <p id="fashion_product_7_describe">Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+
+                <!--特色商品 8-->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-grid fashion_product">
+                        <div class="grid-img">
+                            <!--商品图片-->
+                            <input id="fashion_product_8_pid" type="hidden" name="pid" value=""/>
+                            <img id="fashion_product_8_img" class="img-resposive" src="images/women1.jpg" alt="women"/>
+                            <!--对商品的操作-->
+                            <div class="grid-overlay">
+                                <ul>
+                                    <!--收藏-->
+                                    <li id="fashion_product_8_link"><i class="lnr lnr-link"></i></li>
+                                    <!--图片展示-->
+                                    <li id="fashion_product_8_heart"><i class="lnr lnr-heart"></i></li>
+                                    <!--加入购物车-->
+                                    <li id="fashion_product_8_cart"><i class="lnr lnr-cart"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--特色商品 名称与价格-->
+                        <h3 id="fashion_product_8_pname">Bright Scalet-Shirt <span
+                                id="fashion_product_8_price">$65</span></h3>
+                        <!--特色商品 描述-->
+                        <p id="fashion_product_8_describe">Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- News Trends 新动态-->
+<!--新上架商品-->
+<section class="news-trends">
+    <div class="grid-product">
+        <div class="container">
+            <div class="row">
+                <div class="section-title col-md-offset-3 col-md-6 col-xs-12 text-center">
+                    <h2>News Trends</h2>
+                    <small>Check Out The Best Offer To Stay Trend</small>
+                    <div class="section-border"><span class="dash"></span></div>
+                </div>
+            </div>
+
+            <!--新上架商品-->
+            <div class="row">
+
+                <!-- 新品1 -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-grid newProduct">
+                        <div class="grid-img">
+                            <!--商品id-->
+                            <input id="newProduct_1_pid" type="hidden" name="pid" value=""/>
+                            <!--新品图片-->
+                            <img id="newProduct_1_img" class="img-resposive" src="images/women1.jpg" alt="women"/>
+                            <!--新品标签-->
+                            <strong class="new">New</strong>
+                            <!--收藏，照片，购物车-->
+                            <div class="grid-overlay">
+                                <ul>
+                                    <li id="newProduct_1_link"><i class="lnr lnr-link" ></i></li>
+                                    <li id="newProduct_1_heat"><i class="lnr lnr-heart" ></i></li>
+                                    <li id="newProduct_1_cart"><i class="lnr lnr-cart"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--商品名称 价格 描述-->
+                        <h3 id="newProduct_1_pname">Bright Scalet-Shirt <span id="newProduct_1_price">$65</span></h3>
+                        <p id="newProduct_1_describe">Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+
+                <!-- 新品2 -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-grid newProduct" >
+                        <div class="grid-img">
+                            <!--商品id-->
+                            <input id="newProduct_2_pid" type="hidden" name="pid" value=""/>
+                            <!--新品图片-->
+                            <img id="newProduct_2_img" class="img-resposive" src="images/women1.jpg" alt="women"/>
+                            <!--新品标签-->
+                            <strong class="new">New</strong>
+                            <!--收藏，照片，购物车-->
+                            <div class="grid-overlay">
+                                <ul>
+                                    <li id="newProduct_2_link"><i class="lnr lnr-link" ></i></li>
+                                    <li id="newProduct_2_heat"><i class="lnr lnr-heart" ></i></li>
+                                    <li id="newProduct_2_cart"><i class="lnr lnr-cart"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--商品名称 价格 描述-->
+                        <h3 id="newProduct_2_pname">Bright Scalet-Shirt <span id="newProduct_2_price">$65</span></h3>
+                        <p id="newProduct_2_describe">Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+
+                <!-- 新品3 -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-grid newProduct">
+                        <div class="grid-img">
+                            <!--商品id-->
+                            <input id="newProduct_3_pid" type="hidden" name="pid" value=""/>
+                            <!--新品图片-->
+                            <img id="newProduct_3_img" class="img-resposive" src="images/women1.jpg" alt="women"/>
+                            <!--新品标签-->
+                            <strong class="new">New</strong>
+                            <!--收藏，照片，购物车-->
+                            <div class="grid-overlay">
+                                <ul>
+                                    <li id="newProduct_3_link"><i class="lnr lnr-link" ></i></li>
+                                    <li id="newProduct_3_heat"><i class="lnr lnr-heart" ></i></li>
+                                    <li id="newProduct_3_cart"><i class="lnr lnr-cart"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--商品名称 价格 描述-->
+                        <h3 id="newProduct_3_pname">Bright Scalet-Shirt <span id="newProduct_3_price">$65</span></h3>
+                        <p id="newProduct_3_describe">Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+
+                <!-- 新品4 -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-grid newProduct">
+                        <div class="grid-img">
+                            <!--商品id-->
+                            <input id="newProduct_4_pid" type="hidden" name="pid" value=""/>
+                            <!--新品图片-->
+                            <img id="newProduct_4_img" class="img-resposive" src="images/women1.jpg" alt="women"/>
+                            <!--新品标签-->
+                            <strong class="new">New</strong>
+                            <!--收藏，照片，购物车-->
+                            <div class="grid-overlay">
+                                <ul>
+                                    <li id="newProduct_4_link"><i class="lnr lnr-link" ></i></li>
+                                    <li id="newProduct_4_heat"><i class="lnr lnr-heart" ></i></li>
+                                    <li id="newProduct_4_cart"><i class="lnr lnr-cart"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--商品名称 价格 描述-->
+                        <h3 id="newProduct_4_pname">Bright Scalet-Shirt <span id="newProduct_4_price">$65</span></h3>
+                        <p id="newProduct_4_describe">Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- add Two 直接跳转到特价商品区域 -->
+<section class="ad-2">
+    <div class="over-color">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 text-center">
+                    <small>JeShop</small>
+                    <h2>Beauty Behind The Madness</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
+                    <strong> kalic</strong>
+                    <div><a id="sellCollection" class="btn btn-default">See Collection</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Rescent Posts 最新文章 -->
+<section class="rescent-posts">
+    <div class="container">
+
+        <div class="row">
+            <div class="section-title col-md-offset-3 col-md-6 col-xs-12 text-center">
+                <h2>Rescent Posts</h2>
+                <small>Check Out The Best Offer To Stay Trend</small>
+                <div class="section-border"><span class="dash"></span></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- 文章1 -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-post">
+                    <div class="post-img">
+                        <!--文章配图-->
+                        <img src="images/b-post-1.jpg" width="100%" alt="women"/>
+                        <!--文章日期-->
+                        <div class="date-overlay"><span>24</span>
+                            <div>Nov</div>
+                        </div>
+                    </div>
+                    <!--发布人头像-->
+                    <h3><span><img class="pull-left" src="images/admin.jpg" alt=""/>
+                        <!--文章标题-->
+								</span>Latest Trendy Fashion for Women & Man Limited Stock</h3>
+                    <!-- 文章截文 -->
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit agrel. Donec odio. Quisque volutpat
+                        mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non.</p>
+                </div>
+            </div>
+
+            <!-- 文章2 -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-post">
+                    <div class="post-img">
+                        <img src="images/b-post-2.jpg" width="100%" alt="women"/>
+                        <div class="date-overlay"><span>24</span>
+                            <div>Nov</div>
+                        </div>
+                    </div>
+                    <h3><span><img class="pull-left" src="images/admin.jpg" alt=""/></span>Latest Trendy Fashion for
+                        Women & Man Limited Stock</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit agrel. Donec odio. Quisque volutpat
+                        mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non.</p>
+                </div>
+            </div>
+
+            <!-- 文章3 -->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-post">
+                    <div class="post-img">
+                        <img src="images/b-post-1.jpg" width="100%" alt="women"/>
+                        <div class="date-overlay"><span>24</span>
+                            <div>Nov</div>
+                        </div>
+                    </div>
+                    <h3><span><img class="pull-left" src="images/admin.jpg" alt=""/></span>Latest Trendy Fashion for
+                        Women & Man Limited Stock</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit agrel. Donec odio. Quisque volutpat
+                        mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ & Brands 常见问题及品牌 -->
+<section class="faq-brands">
+    <div class="container">
+        <!-- 标签头 -->
+        <div class="row">
+            <div class="section-title col-md-offset-3 col-md-6 col-xs-12 text-center">
+                <h2>FAQ & Brands</h2>
+                <small>Check Out The Best Offer To Stay Trend</small>
+                <div class="section-border"><span class="dash"></span></div>
+            </div>
+        </div>
+
+        <!-- 品牌图片 -->
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div id="brand" class="carousel slide" data-ride="carousel">
+                    <!-- 选项栏 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#brand" data-slide-to="0" class="active"></li>
+                        <li data-target="#brand" data-slide-to="1"></li>
+                        <li data-target="#brand" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- 浮动框导航栏 -->
+                    <div class="carousel-inner" role="listbox">
+                        <!-- 导航栏 1 设置有自动播放-->
+                        <div class="item active">
+                            <!--上部两个图片-->
+                            <div class="row">
+                                <!--图1-->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand5.png" alt="brand"/>
+                                    </div>
+                                </div>
+                                <!--图2-->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand2.png" alt="brand"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--下部两个图片-->
+                            <div class="row">
+                                <!--图3-->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand3.png" alt="brand"/>
+                                    </div>
+                                </div>
+                                <!--图4-->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand4.png" alt="brand"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 导航栏 2-->
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand5.png" alt="brand"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand2.png" alt="brand"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand3.png" alt="brand"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand4.png" alt="brand"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 导航栏 2-->
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand5.png" alt="brand"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand2.png" alt="brand"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand3.png" alt="brand"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="well well-lg">
+                                        <img src="images/brand4.png" alt="brand"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧-->
+            <div class="col-md-6 col-xs-12">
+                <div class="panel-group faq" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion"
+                                                       href="#1" aria-expanded="true" aria-controls="collapseOne"><i
+                                    class="lnr lnr-inbox"></i>Women Latest fashion Clothes</a></h4>
+                        </div>
+                        <div id="1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <strong>Trendy Styles dolor sit amet reprehenderit</strong>
+                                <p>Lorem ipsum dolor sit amet reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                    brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse"
+                                                       data-parent="#accordion" href="#2" aria-expanded="false"
+                                                       aria-controls="collapseTwo"><i class="lnr lnr-inbox"></i>Men
+                                Latest fashion Clothes</a></h4>
+                        </div>
+                        <div id="2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <strong>Trendy Styles dolor sit amet reprehenderit</strong>
+                                <p>Lorem ipsum dolor sit amet reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                    brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse"
+                                                       data-parent="#accordion" href="#3" aria-expanded="false"
+                                                       aria-controls="collapseThree"><i class="lnr lnr-inbox"></i>Men
+                                Latest fashion Clothes</a></h4>
+                        </div>
+                        <div id="3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body">
+                                <strong>Trendy Styles dolor sit amet reprehenderit</strong>
+                                <p>Lorem ipsum dolor sit amet reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                    brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse"
+                                                       data-parent="#accordion" href="#4" aria-expanded="false"
+                                                       aria-controls="collapseTwo"><i class="lnr lnr-inbox"></i>Men
+                                Latest fashion Clothes</a></h4>
+                        </div>
+                        <div id="4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <strong>Trendy Styles dolor sit amet reprehenderit</strong>
+                                <p>Lorem ipsum dolor sit amet reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                    brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--collapse-->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- bottom footer -->
+<footer class="bottom-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6 col-xs-12 text-center">
+                <p>BuyMore Template <i class=" lnr lnr-heart"></i> Boot Ultra | All Rights Reserved / More Templates <a
+                        href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
+                        href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

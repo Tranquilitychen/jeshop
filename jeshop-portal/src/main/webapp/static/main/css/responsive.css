@@ -1,0 +1,117 @@
+/* media quaries */
+
+
+@media screen and (max-width:1199px) { 
+    .latest-status p{
+        margin-top: -18px;
+    }
+}
+
+@media screen and (max-width:991px) {
+    
+    .nav-search .form-control{
+        width: 240px;
+    }
+    
+    .feature-box .f-s-b {
+        margin-bottom: 30px;
+    }
+    
+    .ad-box-1 {
+        margin-bottom: 30px;
+    }
+
+    .single-grid{
+        margin-bottom: 30px;
+    }
+    
+    .panel-group.faq {
+        margin-top: 30px;
+    }
+    
+    .single-post{
+        margin-bottom: 30px;
+    }
+    
+    .latest-status p {
+        margin-top: -8px;
+    }
+
+}
+
+@media screen and (max-width:350px){
+    .counter-content {
+        left: 15px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .cart-label{
+        margin-right: 10px
+    }
+    
+    .cart-label .lnr {
+        margin: 0 5px 0 0;
+    }
+    
+    .cart-label span{
+        top: 6px;
+    }
+    
+    .navbar-default .navbar-nav > li > a.p-l-0{
+        padding-left: 15px;
+    }
+    
+    .navbar-collapse {
+        padding-left: 15px;
+        padding-right: 15px;
+        border-top: 0;
+        overflow-x: hidden;
+    }
+    
+    .navbar-nav {
+      margin: 0 -15px;
+    }
+    
+    .navbar-default .navbar-nav > li.active > a,
+    .navbar-default .navbar-nav > li > a{
+        background-color: #f1f1f1;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    
+    .bottom-header2 .nav-search .form-control{
+        width: 100%;
+        padding-left: 0;
+        padding-right: 30px;
+    }
+    .nav-search{
+        width: 100%;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+    
+    .navbar-default .navbar-collapse, 
+    .navbar-default .navbar-form {
+        border-color: transparent;
+        
+    }
+    
+    .nav-search .form-control {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 45px;
+    }
+
+    .search-btn {
+        color: #fff;
+        cursor: pointer;
+        font-size: 13px;
+        padding-top: 11px;
+        position: absolute;
+        right: 15px;
+        top: 12px;
+    }
+    
+    
+}

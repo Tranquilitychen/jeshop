@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                       
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<!-- 配置Spring -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	
+	<!-- spring 的 监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 在DispatcherServlet的前面， 让defaultServlet先拦截，这个就不会进入Spring了 -->
+	<servlet-mapping>
+	    <servlet-name>default</servlet-name>
+	    <url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+	    <servlet-name>default</servlet-name>
+	    <url-pattern>*.png</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>default</servlet-name>
+	    <url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>default</servlet-name>
+	    <url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>default</servlet-name>
+	    <url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置 springmvc -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:springmvc.xml</param-value>
+		</init-param>
+		<!-- 设置自启动 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<!-- / 表示 除了 jsp 其他谁都拦截 -->
+		
+		<!-- 
+		1. /*  拦截所有   jsp  js png .css
+		2. *.action *.do 拦截以do action 结尾的请求 
+		3. /  拦截所有 （不包括jsp) (包含.js .png.css)
+	 	-->
+		
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 设置字符编码过滤器 -->
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
