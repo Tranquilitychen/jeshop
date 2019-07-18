@@ -9,8 +9,8 @@
 ### 项目部署: 直接下载到编译器上，在Eclipse或者IDEA中修改配置文件即可。
    
 ### 项目截图：
-
-
+    
+![商城首页](https://github.com/Tranquitilychen/jeshop/blob/master/image/%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99.png)
 
 
 
