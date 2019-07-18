@@ -6,8 +6,16 @@
 
 ### 开发工具：IDEA
 
-### 项目部署: 直接下载到编译器上，在Eclipse或者IDEA中修改配置文件即可。
+### 项目部署: 
+####         1. 下载项目到本地。
+####         2. 导入项目到Eclipse 或者 IDEA,修改配置文件 db.properties中的数据库信息。
+####         3. 运行项目。
    
+### 使用到的框架：
+####    前端： JavaScript + JQuery + Ajax (HTML 与 CSS 来自于模板之家)，用到一点EasyUI
+####    后端： SSM + Maven
+####    数据库： MySQL
+
 ### 项目截图：
     
 ![商城主页](https://github.com/Tranquitilychen/jeshop/blob/master/image/%E4%B8%BB%E9%A1%B5.png)
