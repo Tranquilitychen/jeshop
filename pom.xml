@@ -10,7 +10,7 @@
   		<jsp-version>2.2</jsp-version>
   		<jstl-version>1.2</jstl-version>
   		<!-- 配置Spring版本 -->
-  		<spring-version>4.3.9.RELEASE</spring-version>
+  		<spring-version>5.2.20.RELEASE</spring-version>
   		<!-- 配置 aop 的 aspectj 版本 -->
   		<aspectj-version>1.6.4.RELEASE</aspectj-version>
   		<aopalliance-version>1.0.0</aopalliance-version>
